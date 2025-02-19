@@ -1,0 +1,133 @@
+/* Reset Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+/* Body Styles */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  background-color:  #f4f4f4a7;
+}
+
+/* Main Container */
+.game-container {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Timer */
+#timer {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+/* Puzzle Grid */
+.puzzle-container {
+  display: grid;
+  grid-template-columns: repeat(4, 90px);
+  grid-template-rows: repeat(4, 90px);
+  gap: 5px;
+  background-color: green;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 20px auto;
+  width: fit-content;
+}
+
+/* Puzzle Tiles */
+.puzzle-container .tile {
+  width: 90px;
+  height: 90px;
+  font-size: 28px;
+  background: #ffffa5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.puzzle-container .tile:hover {
+  background: #fff;
+}
+
+.puzzle-container .tile.empty {
+  background: rgba(148, 248, 148, 0.3);
+}
+
+/* Start Button */
+button {
+  padding: 10px 20px;
+  font-size: 18px;
+  border-radius: 5px;
+  background-color: limegreen;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: aquamarine;
+  color: black;
+}
+
+/* Winning Text */
+#winning-text {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 15px;
+  display: none;
+}
+
+/* Mobile Friendly */
+@media (max-width: 500px) {
+  .puzzle-container {
+      grid-template-columns: repeat(4, 70px);
+      grid-template-rows: repeat(4, 70px);
+  }
+
+  .puzzle-container .tile {
+      width: 70px;
+      height: 70px;
+      font-size: 20px;
+  }
+}
+
+/* Confetti Effect */
+.confetti-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.confetti {
+  position: absolute;
+  top: -10px;
+  opacity: 0.7;
+  animation-duration: 3s;
+}
+
+@keyframes fall {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(100vh) rotate(720deg); }
+}
+
+.confetti--animation-slow { animation: fall 3.5s linear infinite; }
+.confetti--animation-medium { animation: fall 2.5s linear infinite; }
+.confetti--animation-fast { animation: fall 1.5s linear infinite; }
